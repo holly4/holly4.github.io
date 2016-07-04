@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Holly4</title>
+  <meta name="description" content="GitHub Page for Holly4. Utilities for use on the Fox Forum; Todd Starnes">
+  <meta name="author" content="Holly4">
+  <style>
+    html {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    p {
+      font-family: Arial, Helvetica, sans-serif;
+    }
+    
+    pre {
+      font-family: Consolas, Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace, serif;
+      margin-bottom: 10px;
+      overflow: auto;
+      width: auto;
+      padding: 5px;
+      background-color: #eee;
+      width: 650px;
+      padding-bottom: 20px;
+      max-height: 600px;
+    }
+  </style>
+  <!-- <link rel="stylesheet" href="css/styles.css"> -->
+  <!--[if lt IE 9]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+</head>
+
+<body>
+  <h1>Scrolling Control for the Fox Forum</h1>
+  <p>For those who hate the automatic scrolling of new comments I created a way to control it. Now me, I think its useful most
+    of the time but sometimes it drives me nuts. Plus I have noticed on other pages at times there is a user who will post
+    a reply to a comment and delete it over and over and over thinking he is preserving freedom by keeping you from posting.</p>
+  <h2>How does it work?</h2>
+  <p>What this does is add a button under the edit window that you can click to turn on and off scrolling. This works by intercepting
+    calls to the browser scrollTo and scrollBy functions and ignoring them if scrolling is not enabled. It is enabled by
+    default.
+  </p>
+  <p>So you will see this meaning scrolling is enabled:</p>
+  <p><img src="comments_enabled.png" alt="Display when comments are enabled" width="589" height="212" /></p>
+  <p>And press it again and you will see this meaning scrolling is disabled</p>
+  <p><img src="comments_disabled.png" alt="Display when comments are disabled" width="591" height="208" /></p>
+  <h2>How do I make it work?</h2>
+  <p>To run it you need to run the javascript code below in your browser. It's easiest in chrome if you look at how to open
+    the developer tools and go to the snippets tab (under the Sources tab). Then you can save this code as a snippet and
+    it will be stored across sessions. Then you can run the snipet in future sessions.</p>
+  <p>For Firefox you will want to look into the JavaScript Scratchpad.</p>
+  <p>For either browser you can also just paste the entire code into the console command line of the browser.</p>
+  <p>For IE you are on your own as I don't use it. (It should work for modern versions of IE but you will need to research how
+    to get the code into the browser).</p>
+  <p>Nothing is persistent outside using the snippets to simply save the code to be run manually later. So worst case if it
+    does not work close your browser and it's like it never happened.</p>
+  <p>---- code follows (Tip: press "view raw" for a page with only the code on it) ----</p>
+  <script src="https://gist.github.com/holly4/960a6dc481947fe7e13204d6d23a8e14.js"></script>
+</body>
+
+</html>
