@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<title>'Unicode Character Character Converter</title>
+
+	<script id="result-template" type="text/x-handlebars-template">
+		<p>
+		The raw text is {{rawLength}} long:<br>{{rawText}}
+		<br><br>
+		The cooked text is {{cooledLength}} long:<br>
+		{{cookedText}}
+		</p>
+	</script>
+	<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+	<div class='main'>
+		<div class='field'>
+			<label>Raw Text:</label>
+			<input type="text" id="rawText" placeholder="Enter raw text" size="80" value="Some Sample Text"><br>
+		</div>
+		<br>
+
+		<div class='field'>
+			<label>Character Set:</label>
+			<select id=charSet>
+				<option value="nbs">Zero Width No-break Space</option>
+				<option value="osm">Ogham Space Mark</option>
+				<option value="mss" selected>Mathematical Sans-Serif</option>
+				<option value="circles">Characters in Circles</option>
+			</select> <br> 
+		</div>
+		<br>
+
+		<div class='field'>
+			<label>Cooked Text:</label>
+			<input type="text" id="cookedText" size="80" readonly><br> 
+		</div>
+		<br>
+
+ 		<button id="convertButton">Convert</button>
+
+		<div id="resultDiv"></div>
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0/handlebars.js"></script>
+		<script src="script.js"></script>
+	</div>
+</body>
+
+</html>

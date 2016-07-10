@@ -1,0 +1,26 @@
+.main {
+    background-color: aliceblue;
+    padding: 20px;
+}
+
+.field { 
+    margin-left: 100 px;
+    line-height: 20 px;
+}
+
+label {
+    text-align: right;
+    padding-right:10px;
+    width: 125px;
+    display: inline-block;
+}
+
+#convertButton {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 120px;
+}
+
+#resultDiv {
+    margin-left: 40px;
+}
