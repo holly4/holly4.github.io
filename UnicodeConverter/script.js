@@ -194,12 +194,11 @@ function Test() {
 }
 
 $(function () {
-    console.log("start");
-
-    $('#rawText').val('a');
+    //console.log("start");
 
     $("#convertButton").click(convertText);
     $("#unconvertButton").click(unconvertText);
 
+    $("#testButton").hide();
     $("#testButton").click(Test);
 });
