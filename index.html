@@ -1,26 +1,41 @@
 <!DOCTYPE html>
-<html lang="en-us">
+<html>
   <head>
-    <meta charset="UTF-8">
-    <title>Holly4.GitHub.io by holly4</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
     <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
-  </head>
-  <body>
-    <section class="page-header">
-      <h1 class="project-name">Holly4.GitHub.io</h1>
-      <h2 class="project-tagline">Github page http://holly4.github.io</h2>
-    </section>
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
 
-    <section class="main-content">
-      <h3>
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <title>Holly4.GitHub.io by holly4</title>
+  </head>
+
+  <body>
+    <header>
+      <div class="inner">
+        <h1>Holly4.GitHub.io</h1>
+        <h2>Github page http://holly4.github.io</h2>
+        <a href="https://github.com/holly4" class="button"><small>Follow me on</small> GitHub</a>
+      </div>
+    </header>
+
+    <div id="content-wrapper">
+      <div class="inner clearfix">
+        <section id="main-content">
+          <p>Quick link to the <a href="https://holly4.github.io/UnicodeConverter/index.html">UnicodeConverter</a></p>
+
+<h3>
 <a id="welcome-to-my-github-page" class="anchor" href="#welcome-to-my-github-page" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Welcome to my GitHub Page.</h3>
 
 <p>This site contains useful code snippets to improve your experience on the Fox Forum. To use them you need to know how to run code in the console tools of your browser. I'll not explain that here, but just google, "How to open the console in XXX", where XXX is your browser name, i.e., chrome, for example.
-If you use chrome you should also investigate how to use chrome snippets. Snippets let you have code saved in Chrome and then you can just select to run them. Again, google is your friend</p>
+If you use chrome you should also investigate how to use chrome snippets. Snippets let you have code saved in Chrome and then you can just select to run them. Again, google is your friend.
+To get to the repository, go here: <a href="https://github.com/holly4/holly4.github.io">github.com/holly4/holly4.github.io</a></p>
 
 <h3>
 <a id="what-is-github" class="anchor" href="#what-is-github" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>What is Github?</h3>
@@ -40,20 +55,72 @@ Yes, at present, but I don't as I use a windows application developed using Sele
 Soon I'll post a simpler version of that for C# coders to play with. 
 Eventually I plan on writing a Chrome Extension for others.</p>
 
+<hr>
+
+<h3>
+<a id="encoding-text-to-bypass-the-filter" class="anchor" href="#encoding-text-to-bypass-the-filter" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Encoding text to bypass the filter</h3>
+
+<p><img src="https://raw.githubusercontent.com/holly4/holly4.github.io/master/images/unicode_converter.png" alt="unicode converter"></p>
+
+<p>This is not a snippet but a web page that allows you to encode text in special Unicode characters to escape the Fox Filter: <a href="https://holly4.github.io/UnicodeConverter/index.html">UnicodeConverter</a></p>
+
+<hr>
+
 <h3>
 <a id="showing-who-liked-posts" class="anchor" href="#showing-who-liked-posts" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Showing Who Liked Posts</h3>
 
+<p><img src="https://raw.githubusercontent.com/holly4/holly4.github.io/master/images/Show-likes.png" alt="page with likes"></p>
+
 <p>This is may favorite little snippet. And it's only one line!
-Livefyre is already recording who likes comments on the page; they are just not enabled to be displayed. This little snippet just enables those to be shown. Since it's so short I'll repeat it here:</p>
+livefyre is already recording who likes comments on the page; they are just not enabled to be displayed. This little snippet just enables those to be shown. Since it's so short I'll repeat it here:</p>
 
-<p><code>$('head').append('&lt;style&gt; div.fyre span.fyre-comment-like-imgs { display: inline; } &lt;/style&gt;');</code></p>
+<p><code>$('head').append('&lt;style&gt; div.fyre span.fyre-comment-like-imgs { display: inline; } &lt;/style&gt;');</code>
+<a href="https://gist.github.com/holly4/072ebca00528ec184e6a07ad3614faff">gist</a></p>
 
-      <footer class="site-footer">
+<hr>
 
-        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
-      </footer>
+<h3>
+<a id="showing-deleted-posts" class="anchor" href="#showing-deleted-posts" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Showing Deleted Posts</h3>
 
-    </section>
+<p><img src="https://raw.githubusercontent.com/holly4/holly4.github.io/master/images/deleted_posts.png" alt="deleted posts">
+Anyone that has used the Fox Forums much has watched posts flash and go away. This due to the abuse or SPAM filter on livefyre. The posts flashes as livefyre first posts it and then goes back and marks it as deleted. Because of this two-step process and using a DOM Mutation Observer, it is possible to restore those filtered post. 
+Also, something that it seems hard for some to understand, when livefyre filters YOUR post they say nothing and so YOU still see it, oblivious that it was filtered.
+<a href="https://gist.github.com/holly4/46095e28fb5042fbdb279ae509010606">gist</a></p>
+
+<hr>
+
+<h3>
+<a id="putting-the-comments-page-on-a-diet" class="anchor" href="#putting-the-comments-page-on-a-diet" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Putting the Comments Page on a diet.</h3>
+
+<p>This is a snippet that removes everything from the comments page except the comments section. It makes scrolling the comment section much easier because, well, that's all that's on the page.
+<a href="https://gist.github.com/holly4/3dbd2c4800c85950f72e24af8a49c5a8">gist</a></p>
+
+<hr>
+
+<h3>
+<a id="disable-scrolling" class="anchor" href="#disable-scrolling" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Disable Scrolling</h3>
+
+<p><img src="https://raw.githubusercontent.com/holly4/holly4.github.io/master/images/comments_disabled.png" alt="comments_disabled"></p>
+
+<p>This snippet allows the automatic scrolling to be disabled so livefyre does not pull you all over the place as people comment on your posts. (It may not be obvious but you click on the notice of whether scrolling is enabled or not to toggle it)
+<a href="https://gist.github.com/holly4/960a6dc481947fe7e13204d6d23a8e14">gist</a></p>
+
+<hr>
+
+<h3>
+<a id="filter-users" class="anchor" href="#filter-users" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Filter Users</h3>
+
+<p>(works but need to add as a gist) T.B.D. 
+This snippet allows you to specify users whose posts are automatically deleted so you never see them.</p>
+        </section>
+
+        <aside id="sidebar">
+
+
+          <p>This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the Architect theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.</p>
+        </aside>
+      </div>
+    </div>
 
   
   </body>
