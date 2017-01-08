@@ -1,26 +1,18 @@
-.main {
+.container {
     background-color: aliceblue;
-    padding: 20px;
-}
 
-.field { 
-    margin-left: 100 px;
-    line-height: 20 px;
 }
 
 label {
+    width: 80px;
     text-align: right;
-    padding-right:10px;
-    width: 125px;
-    display: inline-block;
+    margin-right: 10px;
 }
 
-button {
-    margin-top: 10px;
-    margin-bottom: 10px;
-    margin-left: 20px;
+#example {
+    margin-top: 20px;
 }
 
-#resultDiv {
-    margin-left: 40px;
+#convertButton, .tip { 
+    margin-left: 90px;
 }

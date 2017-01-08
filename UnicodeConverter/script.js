@@ -1,16 +1,19 @@
 /// <reference path="typings/jquery/jquery.d.ts" />
 
-var zeroWidthNoBreakSpace = 0xfeff;
-var oghamSpaceMark = 0x1680;
+const zeroWidthNoBreakSpace = 0xfeff;
+const oghamSpaceMark = 0x1680;
 
-var asciiLowerA = 97;
-var asciiUpperA = 65;
+const asciiLowerA = 97;
+const asciiUpperA = 65;
 
-var mssLowerA = 0x1D5BA;
-var mssUpperA = 0x1D5A0;
+const mssLowerA = 0x1D5BA;
+const mssUpperA = 0x1D5A0;
 
-var circlesLowerA = 0x24d0;
-var circlesUpperA = 0x24B6;
+const circlesLowerA = 0x24d0;
+const circlesUpperA = 0x24B6;
+
+const wordJoiner = 8288;
+const utf8BOM = 65279;
 
 function convertCharacter(ch, lowerA, upperA) {
     var code = ch.charCodeAt(0);
@@ -86,20 +89,74 @@ function removeSpaces(raw, space) {
     return cooked;
 }
 
+function insertLarjassCharacters(raw, mid, poses) {
+    var cooked = raw;
+
+    // work from back to front
+    for (var i=poses.length; i; i--) {
+        var pos = poses[i-1];
+        var pre = cooked.substring(0, pos);
+        var post = cooked.substring(pos);
+        cooked = pre + mid + post;
+    }
+
+    return cooked;
+}
+
+function convertLarjassWord(raw) {
+    var cooked;
+    var mid = String.fromCodePoint(wordJoiner)
+        + String.fromCodePoint(utf8BOM)
+        + String.fromCodePoint(utf8BOM)
+        + String.fromCodePoint(wordJoiner)
+
+    if (raw.length<3) {
+        cooked = raw;
+    } else if (raw.length==5) {
+        // xxx#xx
+        cooked = insertLarjassCharacters(raw, mid, [3]);
+    } else if (raw.length<5) {
+        // xx#x or xx#xx
+        cooked = insertLarjassCharacters(raw, mid, [2]);
+    } else if (raw.length<7) {
+        // xx#xx#x xx#xx#xx
+        cooked = insertLarjassCharacters(raw, mid, [2, 4]);
+    } else {
+        // xx#xx#xx#xx ... 
+        cooked = insertLarjassCharacters(raw, mid, [2, 4, 6]);
+    }
+
+    return cooked;
+}
+
+function convertLarjass(raw) {
+    var cooked = "";
+    var words = raw.split(" ");
+    words.forEach(function(word){
+        var cookedWord = convertLarjassWord(word);
+        cooked += cookedWord + " ";          
+    });
+
+    return cooked.trim();
+}
+
 function convertText() {
     var charSet = $('#charSet').val();
     var rawText = $('#rawText').val();
+    var cookedText = rawText;
 
     if (charSet == 'nbs') {
         var space = String.fromCodePoint(zeroWidthNoBreakSpace);
-        var cookedText = addSpaces(rawText, space);
+        cookedText = addSpaces(rawText, space);
     } else if (charSet == 'osm') {
         var space = String.fromCodePoint(oghamSpaceMark);
-        var cookedText = addSpaces(rawText, space);
+        cookedText = addSpaces(rawText, space);
     } else if (charSet == 'mss') {
-        var cookedText = convertString(rawText, mssLowerA, mssUpperA);
+        cookedText = convertString(rawText, mssLowerA, mssUpperA);
     } else if (charSet == 'circles') {
-        var cookedText = convertString(rawText, circlesLowerA, circlesUpperA);
+        cookedText = convertString(rawText, circlesLowerA, circlesUpperA);
+    } else if (charSet == 'larjass') {
+        cookedText = convertLarjass(rawText);
     }
 
     // Define our data object
@@ -136,17 +193,18 @@ function convertText() {
 function unconvertText() {
     var charSet = $('#charSet').val();
     var rawText = $('#rawText').val();
+    var cookedText = rawText;
 
     if (charSet == 'nbs') {
         var space = String.fromCodePoint(zeroWidthNoBreakSpace);
-        var cookedText = removeSpaces(rawText, space);
+        cookedText = removeSpaces(rawText, space);
     } else if (charSet == 'osm') {
         var space = String.fromCodePoint(oghamSpaceMark);
-        var cookedText = removeSpaces(rawText, space);
+        cookedText = removeSpaces(rawText, space);
     } else if (charSet == 'mss') {
-        var cookedText = unconvertString(rawText, mssLowerA, mssUpperA);
+        cookedText = unconvertString(rawText, mssLowerA, mssUpperA);
     } else if (charSet == 'circles') {
-        var cookedText = unconvertString(rawText, circlesLowerA, circlesUpperA);
+        cookedText = unconvertString(rawText, circlesLowerA, circlesUpperA);
     }
 
     // Define our data object
